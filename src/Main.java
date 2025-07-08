@@ -1,6 +1,7 @@
 import model.Student;
 import service.StudentService;
 
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -53,6 +54,44 @@ public class Main {
                         System.out.println("Student not found.");
                     }
                     break;
+                    
+                 case 3:
+                    // Search student by name
+                    System.out.print("Enter name to search: ");
+                    String searchName = sc.nextLine();
+                    List<Student> foundStudents = service.searchByName(searchName);
+                    if (foundStudents.isEmpty()) {
+                        System.out.println("No students found with the name '" + searchName + "'.");
+                    } else {
+                        System.out.println("Search results:");
+                        for (Student student : foundStudents) {
+                            System.out.println(student);
+                        }
+                    }
+                    break;
+
+                case 4:
+                    // Display all students
+                    List<Student> allStudents = service.getAllStudents();
+                    if (allStudents.isEmpty()) {
+                        System.out.println("No students available.");
+                    } else {
+                        System.out.println("All students:");
+                        for (Student student : allStudents) {
+                            System.out.println(student);
+                        }
+                    }
+                    break;
+
+                case 5:
+                    // Exit program
+                    System.out.println("Exiting...");
+                    return;  // Exit the program
+
+                default:
+                    System.out.println("Invalid choice! Please choose a valid option.");
+                
+                    
             }
         }
     }

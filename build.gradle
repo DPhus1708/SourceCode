@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.1'  // Phiên bản đã được vá lỗi bảo mật
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']  // Đảm bảo rằng thư mục src được chỉ định đúng
+        }
+    }
+}
+
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'Main'  // Đảm bảo rằng lớp chính của bạn là 'Main'
+}
