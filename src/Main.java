@@ -4,7 +4,7 @@ import service.StudentService;
 import java.util.List;
 import java.util.Scanner;
 
-
+// BuiDacPhu - SE196499
 public class Main {
     public static void main(String[] args) {
         StudentService service = new StudentService();
@@ -38,7 +38,7 @@ public class Main {
                         System.out.println(e.getMessage());
                     }
                     break;
-                    
+
                     case 2:
                         System.out.print("Enter ID to delete: ");
                         int deleteId = sc.nextInt(); sc.nextLine();
