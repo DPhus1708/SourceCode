@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'io.snyk.gradle.plugin' version '2.0.1'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://plugins.gradle.org/m2/' } // Thêm kho lưu trữ Gradle Plugin
+    // Hoặc nếu bạn đang sử dụng kho lưu trữ khác cho Snyk, hãy thêm ở đây
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.5.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+}
+
+snyk {
+    token = 'YOUR_SNYK_API_TOKEN' // Nhớ thay thế mã token API của bạn từ Snyk
+    monitor = true // Bật theo dõi các lỗ hổng bảo mật
+    test = true    // Chạy kiểm tra bảo mật
+}
+
+task snykTest {
+    group = 'Verification'
+    description = 'Run Snyk security tests on the project'
+
+    doLast {
+        print 'Running Snyk security test...'
+        snyk.run()
+    }
+}
+
+task snykMonitor {
+    group = 'Verification'
+    description = 'Monitor the project for vulnerabilities'
+
+    doLast {
+        print 'Monitoring the project for vulnerabilities...'
+        snyk.run()
+    }
+}
