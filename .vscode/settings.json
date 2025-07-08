@@ -1,5 +1,22 @@
 {
-  "java.configuration.updateBuildConfiguration": "interactive",
-  "java.debug.settings.onBuildFailureProceed": true,
-  "cSpell.words": ["springframework"]
+  "plugins": {
+    "id": "java"
+  },
+  "group": "com.example",
+  "version": "1.0-SNAPSHOT",
+  "sourceCompatibility": "1.8",
+  "targetCompatibility": "1.8",
+  "repositories": {
+    "mavenCentral": {}
+  },
+  "dependencies": {
+    "testImplementation": "junit:junit:4.13.1"
+  },
+  "sourceSets": {
+    "main": {
+      "java": {
+        "srcDirs": ["src"]
+      }
+    }
+  }
 }
